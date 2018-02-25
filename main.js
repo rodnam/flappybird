@@ -1,6 +1,10 @@
 var bird
 var pipes = []
 
+const states = ["gameplay","death","start"]
+
+let currentState = "gameplay"
+
 function setup() {
   createCanvas(400,500)
   bird = new Bird()
@@ -9,31 +13,33 @@ function setup() {
 
 function draw() {
   background(0)
+  if (currentState == "gameplay"){
+    for (var i = pipes.length - 1; i >= 0; i--){
+      pipes[i].show()
+      pipes[i].update()
 
-  for (var i = pipes.length - 1; i >= 0; i--){
-    pipes[i].show()
-    pipes[i].update()
+      if (pipes[i].hits(bird)){
+        console.log("hit")
+        textSize(32)
+        stroke(0,0,0)
+        text("GAME OVER PRESS F5 TO REPLAY",100,300,[230],[350])
+        textAlign(CENTER);
+        throw "sdf"
+      }
 
-    if (pipes[i].hits(bird)){
-      console.log("hit")
-      textSize(32)
-      stroke(0,0,0)
-      text("GAME OVER PRESS F5 TO REPLAY",100,300,[230],[350])
-      textAlign(CENTER);
-      throw "sdf"
+      if (pipes[i].offscreen()){
+        pipes.splice(i,1)
+      }
     }
 
-    if (pipes[i].offscreen()){
-      pipes.splice(i,1)
+    bird.update()
+    bird.show()
+
+    if (frameCount % 30 == 0){
+      pipes.push(new Pipe())
     }
   }
 
-  bird.update()
-  bird.show()
-
-  if (frameCount % 30 == 0){
-    pipes.push(new Pipe())
-  }
 
 
 
