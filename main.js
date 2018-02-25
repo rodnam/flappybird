@@ -11,6 +11,10 @@ function setup() {
   pipes.push(new Pipe())
 }
 
+function restart(){
+  pipes = []
+}
+
 function draw() {
   background(0)
   if (currentState == "gameplay"){
@@ -19,12 +23,7 @@ function draw() {
       pipes[i].update()
 
       if (pipes[i].hits(bird)){
-        console.log("hit")
-        textSize(32)
-        stroke(0,0,0)
-        text("GAME OVER PRESS F5 TO REPLAY",100,300,[230],[350])
-        textAlign(CENTER);
-        throw "sdf"
+        currentState = "death"
       }
 
       if (pipes[i].offscreen()){
@@ -40,6 +39,15 @@ function draw() {
     }
   }
 
+  if (currentState == "death"){
+    console.log("hit")
+    textSize(32)
+    stroke(0,0,0)
+    text("GAME OVER PRESS SPACE TO REPLAY \n \n YOUR SCORE: testhere",100,100,[210],[350])
+    textAlign(CENTER, TOP);
+
+  }
+
 
 
 
@@ -48,6 +56,12 @@ function draw() {
 
 function keyPressed(){
   if (key == ' '){
-    bird.up()
+    if (currentState == "gameplay"){
+      bird.up()
+    }
+    if (currentState == "death"){
+      currentState = "gameplay"
+      restart()
+    }
   }
 }
