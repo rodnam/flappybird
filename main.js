@@ -3,7 +3,7 @@ var pipes = []
 
 const states = ["gameplay","death","start"]
 
-let currentState = "gameplay"
+let currentState = "start"
 
 function setup() {
   createCanvas(400,500)
@@ -39,15 +39,19 @@ function draw() {
     }
   }
 
-  if (currentState == "death"){
-    console.log("hit")
+  else if (currentState == "death"){
     textSize(32)
     stroke(0,0,0)
     text("GAME OVER PRESS SPACE TO REPLAY \n \n YOUR SCORE: testhere",100,100,[210],[350])
     textAlign(CENTER, TOP);
-
   }
 
+  else if (currentState == "start") {
+    textSize(32)
+    stroke(0,0,0)
+    text("hi",100,100,[210],[350])
+    textAlign(CENTER, TOP);
+  }
 
 
 
@@ -60,6 +64,10 @@ function keyPressed(){
       bird.up()
     }
     if (currentState == "death"){
+      currentState = "gameplay"
+      restart()
+    }
+    if (currentState == "start"){
       currentState = "gameplay"
       restart()
     }

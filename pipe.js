@@ -15,7 +15,7 @@ function Pipe(){
       fill(255,0,0)
     }
     rect(this.x, 0, this.w, this.top)
-    rect(this.x, height-this.bottom, this.w, this.top, this.bottom)
+    rect(this.x, height-this.bottom, this.w, this.bottom)
   }
 
   this.update = function(){
@@ -23,7 +23,7 @@ function Pipe(){
   }
 
   this.offscreen = function(){
-    return this.x < -this.  w
+    return this.x < -this.w
   }
 
   this.hits = function(bird){
