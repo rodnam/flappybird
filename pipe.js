@@ -35,4 +35,8 @@ function Pipe(){
     return false;
   }
 
+  this.birdPass = function(bird){
+    
+  }
+
 }
