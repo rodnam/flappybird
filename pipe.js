@@ -9,6 +9,8 @@ function Pipe(){
 
   this.highlight = false;
 
+  this.passed = false
+
   this.show = function(){
     fill(255);
     if (this.highlight){
@@ -36,7 +38,13 @@ function Pipe(){
   }
 
   this.birdPass = function(bird){
-    
+    if (bird.x > this.x && this.hits(bird) === false && this.passed === false){
+      this.passed = true
+      return true
+    }
+    else{
+      return false
+    }
   }
 
 }

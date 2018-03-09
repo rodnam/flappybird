@@ -5,6 +5,8 @@ const states = ["gameplay","death","start"]
 
 let currentState = "start"
 
+score = 0
+
 function setup() {
   createCanvas(400,500)
   bird = new Bird()
@@ -13,6 +15,7 @@ function setup() {
 
 function restart(){
   pipes = []
+  score = 0
 }
 
 function draw() {
@@ -24,6 +27,11 @@ function draw() {
 
       if (pipes[i].hits(bird)){
         currentState = "death"
+      }
+
+      if (pipes[i].birdPass(bird)){
+        score++
+        console.log(score)
       }
 
       if (pipes[i].offscreen()){
@@ -42,7 +50,7 @@ function draw() {
   else if (currentState == "death"){
     textSize(32)
     stroke(0,0,0)
-    text("GAME OVER PRESS SPACE TO REPLAY \n \n YOUR SCORE: testhere",100,100,[210],[350])
+    text("GAME OVER PRESS SPACE TO REPLAY \n \n YOUR SCORE:"+score,100,100,[210],[350])
     textAlign(CENTER, TOP);
   }
 
