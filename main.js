@@ -49,7 +49,7 @@ function draw() {
 
   else if (currentState == "death"){
     textSize(32)
-    stroke(0,0,0)
+    stroke(0,80,0)
     text("GAME OVER PRESS SPACE TO REPLAY \n \n YOUR SCORE:"+score,100,100,[210],[350])
     textAlign(CENTER, TOP);
   }
