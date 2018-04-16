@@ -26,10 +26,7 @@ function draw() {
       pipes[i].update()
 
       if (pipes[i].hits(bird)){
-            textSize(32)
-            stroke(80,0,0)
-            text("GAME OVER PRESS SPACE TO REPLAY ,100,100,[210],[350])
-            textAlign(CENTER, TOP);
+
       }
 
       if (pipes[i].birdPass(bird)){
