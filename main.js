@@ -26,7 +26,7 @@ function draw() {
       pipes[i].update()
 
       if (pipes[i].hits(bird)){
-
+       currentState = "death"
       }
 
       if (pipes[i].birdPass(bird)){
