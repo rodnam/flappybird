@@ -1,11 +1,11 @@
 function Pipe(){
-  this.top = random(height/3)
-  this.bottom = random(height/3)
+  this.top = random(height/2)
+  this.bottom = random(height/2)
 
   this.x = width
   this.w = 20
 
-  this.speed = 1;
+  this.speed = 10;
 
   this.highlight = false;
 
